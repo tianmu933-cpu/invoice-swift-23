@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import dashboardPreview from "@/assets/dashboard-preview.png";
@@ -29,13 +30,17 @@ const Hero = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-            <Button variant="hero" size="xl" className="group">
-              Start Free Trial
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+            <Button variant="hero" size="xl" className="group" asChild>
+              <Link to="/signup">
+                Start Free Trial
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </Button>
-            <Button variant="outline" size="xl" className="group">
-              <Play className="mr-2" />
-              View Demo
+            <Button variant="outline" size="xl" className="group" asChild>
+              <Link to="/signup">
+                <Play className="mr-2" />
+                View Demo
+              </Link>
             </Button>
           </div>
           

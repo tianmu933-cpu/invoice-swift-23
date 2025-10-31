@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 
@@ -53,8 +54,8 @@ const Pricing = () => {
             </ul>
             
             {/* CTA */}
-            <Button variant="hero" size="xl" className="w-full mb-3">
-              Start Your Free Trial
+            <Button variant="hero" size="xl" className="w-full mb-3" asChild>
+              <Link to="/signup">Start Your Free Trial</Link>
             </Button>
             <p className="text-sm text-muted-foreground text-center">
               14-day free trial

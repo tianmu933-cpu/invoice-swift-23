@@ -14,7 +14,199 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      clients: {
+        Row: {
+          address: string | null
+          city: string | null
+          country: string | null
+          created_at: string
+          email: string | null
+          id: string
+          name: string
+          notes: string | null
+          phone: string | null
+          state: string | null
+          user_id: string
+          zip: string | null
+        }
+        Insert: {
+          address?: string | null
+          city?: string | null
+          country?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          phone?: string | null
+          state?: string | null
+          user_id: string
+          zip?: string | null
+        }
+        Update: {
+          address?: string | null
+          city?: string | null
+          country?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          phone?: string | null
+          state?: string | null
+          user_id?: string
+          zip?: string | null
+        }
+        Relationships: []
+      }
+      invoices: {
+        Row: {
+          amount: number
+          client_id: string
+          created_at: string
+          discount: number
+          due_date: string
+          id: string
+          invoice_number: string
+          issue_date: string
+          notes: string | null
+          status: string
+          tax: number
+          terms: string | null
+          total: number
+          user_id: string
+        }
+        Insert: {
+          amount?: number
+          client_id: string
+          created_at?: string
+          discount?: number
+          due_date: string
+          id?: string
+          invoice_number: string
+          issue_date?: string
+          notes?: string | null
+          status?: string
+          tax?: number
+          terms?: string | null
+          total?: number
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          client_id?: string
+          created_at?: string
+          discount?: number
+          due_date?: string
+          id?: string
+          invoice_number?: string
+          issue_date?: string
+          notes?: string | null
+          status?: string
+          tax?: number
+          terms?: string | null
+          total?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "invoices_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      line_items: {
+        Row: {
+          amount: number
+          created_at: string
+          description: string
+          id: string
+          invoice_id: string
+          quantity: number
+          rate: number
+        }
+        Insert: {
+          amount?: number
+          created_at?: string
+          description: string
+          id?: string
+          invoice_id: string
+          quantity?: number
+          rate?: number
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          description?: string
+          id?: string
+          invoice_id?: string
+          quantity?: number
+          rate?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "line_items_invoice_id_fkey"
+            columns: ["invoice_id"]
+            isOneToOne: false
+            referencedRelation: "invoices"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          company_address: string | null
+          company_logo: string | null
+          company_name: string | null
+          company_phone: string | null
+          created_at: string
+          currency: string | null
+          default_terms: string | null
+          email: string
+          id: string
+          invoice_prefix: string | null
+          name: string
+          subscription_status: string
+          tax_rate: number | null
+          trial_end_date: string
+        }
+        Insert: {
+          company_address?: string | null
+          company_logo?: string | null
+          company_name?: string | null
+          company_phone?: string | null
+          created_at?: string
+          currency?: string | null
+          default_terms?: string | null
+          email: string
+          id: string
+          invoice_prefix?: string | null
+          name: string
+          subscription_status?: string
+          tax_rate?: number | null
+          trial_end_date?: string
+        }
+        Update: {
+          company_address?: string | null
+          company_logo?: string | null
+          company_name?: string | null
+          company_phone?: string | null
+          created_at?: string
+          currency?: string | null
+          default_terms?: string | null
+          email?: string
+          id?: string
+          invoice_prefix?: string | null
+          name?: string
+          subscription_status?: string
+          tax_rate?: number | null
+          trial_end_date?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

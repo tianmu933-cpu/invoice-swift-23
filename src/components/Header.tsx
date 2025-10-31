@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
@@ -11,10 +12,10 @@ const Header = () => {
         
         <div className="flex items-center gap-4">
           <Button variant="ghost" asChild>
-            <a href="#signin">Sign in</a>
+            <Link to="/login">Sign in</Link>
           </Button>
           <Button variant="hero" size="default" asChild>
-            <a href="#trial">Start Free Trial</a>
+            <Link to="/signup">Start Free Trial</Link>
           </Button>
         </div>
       </div>
